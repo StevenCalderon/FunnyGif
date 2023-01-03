@@ -3,11 +3,7 @@ import { AddCategory } from './components/AddCategory';
 import { GifGrid } from './components/GifGrid';
 
 export const FunnyGifApp = () => {
-	const [categories, setCategories] = useState([
-		'Deadpool',
-		'Dragon Ball',
-		'Bad bunny',
-	]);
+	const [categories, setCategories] = useState(['Deadpool']);
 
 	const validateNewCategory = (newCategory) => {
 		const lowerCaseCategories = categories.map((category) => {
