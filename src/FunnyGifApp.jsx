@@ -24,7 +24,7 @@ export const FunnyGifApp = () => {
 
 	return (
 		<>
-			<h1>Funny Gifs</h1>
+			<h2>Funny Gifs</h2>
 
 			<AddCategory onNewCategory={onNewCategory} />
 
