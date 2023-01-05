@@ -1,27 +1,24 @@
+import { GifItem } from './GifItem';
+import { useFetchGifs } from '../hooks/useFetchGifs';
+
 export function GifGrid({ category }) {
-	//ltweEHnvvm6YmRPdQ72yVPsgwNVzE4qb
-	//[Search endpoint](/docs/api/endpoint/#search)
-
-	const requestAPI = async () => {
-		const keyAPI = 'ltweEHnvvm6YmRPdQ72yVPsgwNVzE4qb';
-		const responseAPI = await fetch(
-			`http://api.giphy.com/v1/gifs/search?q=${category}&api_key=${keyAPI}&limit=5`
-		);
-		const dataAPI = await responseAPI.json();
-		return dataAPI.data;
-	};
-
-	//const arrDataAPI = requestAPI();
-	//console.log(arrDataAPI);
-	/*const arrImages = arrDataAPI.map((img) => {
-		return img.url;
-	});*/
-	//console.log(arrDataAPI);
-
+	const { images, isLoading } = useFetchGifs(category);
 	return (
 		<>
 			<h3>{category}</h3>
-			<p>Hola Mundo</p>
+			{isLoading && <h4>Cargando ...</h4>} {/* Es un and ternario */}
+			<div className="card-grid">
+				{images.map(({ id, title, url }) => (
+					<GifItem key={id} title={title} url={url} />
+				))}
+				{/* Tambien se puede hacer asi, se usa cuando hay muchas propiedades
+				 {images.map((image) => (
+					<GifItem key={id} {...image} />
+					lo que hace es pasar todas las propiedades de la imagen ya reccorridas
+				))}
+				 
+				 */}
+			</div>
 		</>
 	);
 }
