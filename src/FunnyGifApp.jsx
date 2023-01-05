@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { AddCategory } from './components/AddCategory';
-import { GifGrid } from './components/GifGrid';
+import { AddCategory, GifGrid } from './components';
 
 export const FunnyGifApp = () => {
-	const [categories, setCategories] = useState(['Deadpool']);
+	const [categories, setCategories] = useState(['Hacker', 'Meme', 'Deadpool']);
 
 	const validateNewCategory = (newCategory) => {
 		const lowerCaseCategories = categories.map((category) => {
